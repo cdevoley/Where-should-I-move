@@ -71,7 +71,7 @@ git push origin main
 Full plan: [docs/PLAN.md](docs/PLAN.md). Update this checklist when a phase's checkpoint is green.
 - [x] **Phase 0** — Scaffolding & tooling (Next.js + Tailwind + shadcn/ui; build passes)
 - [x] **Phase 1** — Data model & 20-city seed dataset
-- [ ] **Phase 2** — Ranking engine + `/rankings` page (weights in URL via `nuqs`)
+- [x] **Phase 2** — Ranking engine + `/rankings` page (weights in URL via `nuqs`)
 - [ ] **Phase 3** — City detail pages `/cities/[slug]` (radar + bars; SSG)
 - [ ] **Phase 4** — Comparison tool `/compare` (2–3 cities via URL params)
 - [ ] **Phase 5** — Interactive map `/map` (react-leaflet + OSM)
