@@ -25,32 +25,52 @@ Files generated in CoWork are saved to the CoWork planning folder, then moved/re
 
 Incrementally added deps: `nuqs` (Phase 2), `recharts` (Phase 3), `leaflet` + `react-leaflet` (Phase 5), `@vercel/analytics` (Phase 7).
 
-## Project Structure (to be filled in as built)
+## Project Structure
 ```
 where-should-i-move/
-├── CLAUDE.md          # This file — Claude Code context
+├── CLAUDE.md
 ├── README.md
-├── src/               # App source (TBD)
+├── docs/PLAN.md         # Phased implementation plan
+├── src/
+│   ├── app/             # Next.js App Router pages
+│   ├── components/
+│   │   ├── ui/          # shadcn/ui primitives
+│   │   ├── layout/      # Header, Footer, ThemeProvider
+│   │   ├── rankings/    # RankingsTable, WeightsPanel
+│   │   ├── city/        # MetricsRadar, MetricBar
+│   │   ├── compare/     # CitySelector, ComparisonTable
+│   │   ├── map/         # CitiesMap (client-only)
+│   │   └── quiz/        # QuizFlow, QuizQuestion
+│   ├── data/
+│   │   ├── cities.seed.json
+│   │   └── README.md    # Data sources & schema docs
+│   ├── lib/
+│   │   ├── types.ts     # Re-exports from src/types/
+│   │   ├── cities.ts    # getAllCities, getCityBySlug, etc.
+│   │   ├── ranking.ts   # scoreCity, rankCities
+│   │   ├── similarity.ts
+│   │   ├── quiz.ts
+│   │   └── scoring/     # composite, normalize, weights
+│   └── types/           # TypeScript interfaces
 └── ...
 ```
 
 ## Key Commands
 ```bash
-# Start dev server (once configured)
-npm run dev
+npm run dev        # Start dev server
+npm run build      # Production build
+npm run typecheck  # tsc --noEmit
+npm run lint       # ESLint
+npm run format     # Prettier
 
-# Run tests
-npm test
-
-# Git sync
 git pull origin main
 git push origin main
 ```
 
 ## Phase Progress
 Full plan: [docs/PLAN.md](docs/PLAN.md). Update this checklist when a phase's checkpoint is green.
-- [ ] **Phase 0** — Scaffolding & tooling (Next.js + Tailwind + shadcn/ui; Vercel hello-world deploy)
-- [ ] **Phase 1** — Data model & 20-city seed dataset
+- [x] **Phase 0** — Scaffolding & tooling (Next.js + Tailwind + shadcn/ui; build passes)
+- [x] **Phase 1** — Data model & 20-city seed dataset
 - [ ] **Phase 2** — Ranking engine + `/rankings` page (weights in URL via `nuqs`)
 - [ ] **Phase 3** — City detail pages `/cities/[slug]` (radar + bars; SSG)
 - [ ] **Phase 4** — Comparison tool `/compare` (2–3 cities via URL params)
